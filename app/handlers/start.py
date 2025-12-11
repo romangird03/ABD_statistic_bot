@@ -1,9 +1,15 @@
+from aiogram.filters import Command
 from aiogram import Router, types
 from aiogram.filters import CommandStart
 
 from app.keyboards.stats import main_menu_keyboard
 
 router = Router()
+
+
+@router.message(Command("chatid"))
+async def chatid_handler(message: types.Message):
+    await message.answer(f"chat_id: {message.chat.id}")
 
 
 @router.message(CommandStart())
